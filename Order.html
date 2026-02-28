@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tsambayan</title>
+  <style>
+    
+    .box {
+      background: whitesmoke;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 20px;
+      box-shadow: 0 10px 5px color;
+      transition: transform 0.5s;
+      box-shadow: 0 5px 10px rgba(122, 201, 67, 0.5);
+    }
+
+    .box:hover {
+      transform: translateY(10px);
+    }
+
+    .box h3 {
+      transition: color 0.3s ease;
+    }
+
+    .box:hover h3 {
+      color: #7ac943;
+    }
+
+    .order {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+
+    .remove-btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      margin-top: 5px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #add-order-btn {
+      background: #7ac943;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="orders-container">
+    <div class="box order">
+      <h3>Choose Your Drink</h3>
+      <select class="drinks">
+        <option>Choose your drinks</option>
+        <option>Classic MilkTea</option>
+        <option>Wintermelon</option>
+        <option>Okinawa</option>
+        <option>Salted Caramel</option>
+        <option>Cookies & Cream</option>
+        <option>Strawberry</option>
+        <option>Red Velvet</option>
+        <option>Matcha</option>
+        <option>Taro</option>
+        <option>Dark Chocolate</option>
+        <option>Choco Mousse</option>
+        <option>Chocolate</option>
+        <option>Double Dutch</option>
+        <option>Very Rocky Road</option>
+        <option>Vanilla</option>
+        <option>Capuccino</option>
+        <option>Hokkaido</option>
+        <option>Lychee</option>
+        <option>Blue Lemonade</option>
+        <option>Green Apple</option>
+        <option>Strawberry</option>
+        <option>Blurberry</option>
+      </select>
+
+      <h3>Sugar Level</h3>
+      <select class="sugar">
+        <option>Choose sugar level</option>
+        <option>100%</option>
+        <option>75%</option>
+        <option>50%</option>
+        <option>25%</option>
+        <option>0%</option>
+      </select>
+
+      <h3>Milk Tea Sizes</h3>
+      <select class="size">
+        <option>Choose Size</option>
+        <option value="49">Medium - 49</option>
+        <option value="69">Large - 69</option>
+        <option value="79">1 Liter - 79</option>
+        <option value="99">Premium - 99</option>
+      </select>
+
+      <h3>Add-Ons</h3>
+      <label><input type="checkbox" value="10" class="addon" />Black Pearl (+10)</label>
+      <label><input type="checkbox" value="10" class="addon" />Nata de coco (+10)</label>
+      <label><input type="checkbox" value="20" class="addon" />Cream Cheese (+20)</label>
+      <label><input type="checkbox" value="10" class="addon" />Crushed Oreo (+10)</label>
+      <label><input type="checkbox" value="10" class="addon" />Fruit Jelly (+10)</label>
+
+      <br>
+      <button class="remove-btn">Remove This Order</button>
+    </div>
+  </div>
+
+  <button id="add-order-btn">+ Add Another Order</button>
+
+  <h3>Total Price: <span id="total">0</span> &#8369;</h3>
+
+  <script>
+    const ordersContainer = document.getElementById("orders-container");
+    const addOrderBtn = document.getElementById("add-order-btn");
+    const totalSpan = document.getElementById("total");
+
+    
+    function calculateTotal() {
+      let totalPrice = 0;
+      ordersContainer.querySelectorAll(".order").forEach(order => {
+        const sizePrice = parseInt(order.querySelector(".size").value) || 0;
+        let addOnsPrice = 0;
+        order.querySelectorAll(".addon").forEach(cb => {
+          if (cb.checked) addOnsPrice += parseInt(cb.value);
+        });
+        totalPrice += sizePrice + addOnsPrice;
+      });
+      totalSpan.textContent = totalPrice;
+    }
+
+    function addRemoveListener(order) {
+      order.querySelector(".remove-btn").addEventListener("click", e => {
+        e.target.closest(".order").remove();
+        calculateTotal();
+      });
+    }
+
+    addRemoveListener(ordersContainer.querySelector(".order"));
+
+    addOrderBtn.addEventListener("click", () => {
+      const firstOrder = ordersContainer.querySelector(".order");
+      const newOrder = firstOrder.cloneNode(true);
+
+      newOrder.querySelectorAll("select").forEach(s => s.selectedIndex = 0);
+      newOrder.querySelectorAll("input[type=checkbox]").forEach(c => c.checked = false);
+
+      addRemoveListener(newOrder);
+
+      ordersContainer.appendChild(newOrder);
+
+      calculateTotal();
+    });
+
+    ordersContainer.addEventListener("change", calculateTotal);
+    
+    calculateTotal();
+  </script>
+</body>
+
+</html>

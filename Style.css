@@ -290,9 +290,61 @@ section {
     margin: 0;
     font-style: italic;
 }
+.Order-Btn {
+    width: 150px;
+    background-color: white;
+    height: 50px;
+    text-align: center;
+    align-content: center;
+    border-radius: 20px;
+    color: #1a3d2b;
+    font-family: Anton;
+    margin: 0 auto;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(46, 107, 70, 0.15);
+    text-decoration: none;
+    
+
+}
+.Order-Btn:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(46, 107, 70, 0.3);
+    border-color: #2E6B46;
+    background-color: #5DA87A;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;   
+}
+.Order-Btn:active{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(46, 107, 70, 0.3);
+    border-color: #2E6B46;
+    background-color: #1cff73;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+.Order-Btn a:link, .Order-Btn a:visited{
+    text-decoration: none;
+    color: rgb(3, 2, 2);
+}
 
 /* Contact */
-
+#contact {
+    background-color: #c4f5d64b;
+}
+.ContactDiv {
+    height: 700px;
+    background-color: #5DA87A;
+    width: 85%;
+    margin: 0 auto;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    display: grid;
+    grid-column: 1;
+    
+}
 
 
 
