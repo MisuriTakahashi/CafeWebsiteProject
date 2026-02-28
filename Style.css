@@ -332,6 +332,7 @@ section {
 /* Contact */
 #contact {
     background-color: #c4f5d64b;
+    height: 100vh;
 }
 .ContactDiv {
     height: 700px;
@@ -345,6 +346,23 @@ section {
     grid-column: 1;
     
 }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #059e45;
+    color: #fff;
+    font-family: 'Anton', sans-serif;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 100px;
+}
+footer a{
+    color: white;
+    text-decoration: none;
+}   
 
 
 

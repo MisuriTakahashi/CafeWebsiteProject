@@ -55,10 +55,38 @@
       border-radius: 5px;
       margin: 20px;
     }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #333;
+      color: white;
+      padding: 8px 15px;
+      margin: 20px 20px 0 20px;
+      border-radius: 5px;
+      font-family: sans-serif;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #7ac943;
+    }
+    .place-order-btn{
+      background: #7ac943;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 20px;
+      width: 120px;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
+  <a href="index.html" class="back-btn">&#8592; Back</a>
   <div id="orders-container">
     <div class="box order">
       <h3>Choose Your Drink</h3>
@@ -79,13 +107,12 @@
         <option>Double Dutch</option>
         <option>Very Rocky Road</option>
         <option>Vanilla</option>
-        <option>Capuccino</option>
+        <option>Cappuccino</option>
         <option>Hokkaido</option>
         <option>Lychee</option>
         <option>Blue Lemonade</option>
         <option>Green Apple</option>
-        <option>Strawberry</option>
-        <option>Blurberry</option>
+        <option>Blueberry</option>
       </select>
 
       <h3>Sugar Level</h3>
@@ -122,12 +149,15 @@
   <button id="add-order-btn">+ Add Another Order</button>
 
   <h3>Total Price: <span id="total">0</span> &#8369;</h3>
+  <p class="place-order-btn">Place your order</p>
 
   <script>
     const ordersContainer = document.getElementById("orders-container");
     const addOrderBtn = document.getElementById("add-order-btn");
     const totalSpan = document.getElementById("total");
 
+    // Save a template of the first order in case the user deletes all of them
+    const orderTemplate = ordersContainer.querySelector(".order").cloneNode(true);
     
     function calculateTotal() {
       let totalPrice = 0;
@@ -152,8 +182,7 @@
     addRemoveListener(ordersContainer.querySelector(".order"));
 
     addOrderBtn.addEventListener("click", () => {
-      const firstOrder = ordersContainer.querySelector(".order");
-      const newOrder = firstOrder.cloneNode(true);
+      const newOrder = orderTemplate.cloneNode(true);
 
       newOrder.querySelectorAll("select").forEach(s => s.selectedIndex = 0);
       newOrder.querySelectorAll("input[type=checkbox]").forEach(c => c.checked = false);
