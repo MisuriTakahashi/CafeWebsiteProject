@@ -6,87 +6,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tsambayan</title>
   <style>
-    
-    .box {
-      background: whitesmoke;
-      border-radius: 10px;
-      padding: 10px;
-      margin: 20px;
-      box-shadow: 0 10px 5px color;
-      transition: transform 0.5s;
-      box-shadow: 0 5px 10px rgba(122, 201, 67, 0.5);
-    }
 
-    .box:hover {
-      transform: translateY(10px);
-    }
+body {
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    .box h3 {
-      transition: color 0.3s ease;
-    }
+#orders-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
 
-    .box:hover h3 {
-      color: #7ac943;
-    }
+.box {
+  background: darkseagreen;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .order {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 15px;
-    }
 
-    .remove-btn {
-      background: #f44336;
-      color: white;
-      border: none;
-      padding: 4px 8px;
-      margin-top: 5px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
+.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
 
-    #add-order-btn {
-      background: #7ac943;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 20px;
-    }
+.back-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 999;
+  background: #1e5c38;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.back-btn:hover {
+  background: #7ac943;
+}
 
-    .back-btn {
-      display: inline-block;
-      text-decoration: none;
-      background: #333;
-      color: white;
-      padding: 8px 15px;
-      margin: 20px 20px 0 20px;
-      border-radius: 5px;
-      font-family: sans-serif;
-      transition: background 0.3s ease;
-    }
 
-    .back-btn:hover {
-      background: #7ac943;
-    }
-    .place-order-btn{
-      background: #7ac943;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 20px;
-      width: 120px;
-      text-align: center;
-    }
+#add-order-btn,
+.place-order-btn {
+  display: block;
+  margin: 20px auto;
+  background: #7ac943;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+#add-order-btn:hover,
+.place-order-btn:hover {
+  background: #5da87a;
+}
+
+.box h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+select,
+input[type="text"],
+input[type="time"] {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
+.place-order-btn {
+  display: block;
+  margin: 20px auto;
+}
+
+
+h3 {
+  text-align: center;
+}
+
+.remove-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #ff4d4d;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.remove-btn:hover {
+  background: #cc0000;
+}
+
+.customer-info {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+
   </style>
 </head>
 
 <body>
   <a href="index.html" class="back-btn">&#8592; Back</a>
+  <br>
+  <br>
   <div id="orders-container">
     <div class="box order">
       <h3>Choose Your Drink</h3>
@@ -149,7 +193,20 @@
   <button id="add-order-btn">+ Add Another Order</button>
 
   <h3>Total Price: <span id="total">0</span> &#8369;</h3>
-  <p class="place-order-btn">Place your order</p>
+
+  <div class="customer-info box">
+    <h3>Customer Information</h3>
+    <label for="customer-name">Name:</label>
+    <input type="text" id="customer-name" placeholder="Enter your name" required>
+
+    <label for="customer-contact">Contact Number:</label>
+    <input type="text" id="customer-contact" placeholder="Enter your contact number" required>
+
+    <label for="order-time">Time:</label>
+    <input type="time" id="order-time" required>
+  </div>
+
+  <button class="place-order-btn" id="place-order-btn">Place Order</button>
 
   <script>
     const ordersContainer = document.getElementById("orders-container");

@@ -332,10 +332,14 @@ section {
 /* Contact */
 #contact {
     background-color: #c4f5d64b;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 50px;
 }
 .ContactDiv {
-    height: 700px;
+    min-height: 550px;
+    height: auto;
+    padding: 30px 0;
     background-color: #5DA87A;
     width: 85%;
     margin: 0 auto;
@@ -344,8 +348,63 @@ section {
     align-content: center;
     display: grid;
     grid-column: 1;
+   
     
 }
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+
+.boxes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.box {
+  background: #ffffff;
+  color: #000;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+}
+
+.box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+.box p{
+    font-size: 20px;
+    font-family: 'FjallaOne';
+}
+.box strong{
+    font-size: 20px;
+    font-family: 'FjallaOne';
+    color: #2fc477;
+}
+.box a {
+    text-decoration: none;
+    color: #2fc477;
+    font-size: 20px;
+    font-family: 'FjallaOne';
+}
+
 
 footer {
     text-align: center;
@@ -363,6 +422,8 @@ footer a{
     color: white;
     text-decoration: none;
 }   
+
+
 
 
 
