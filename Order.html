@@ -5,126 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tsambayan</title>
-  <style>
-
-body {
-  background: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#orders-container {
-  max-width: 1000px;
-  margin: 30px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.box {
-  background: darkseagreen;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-.box:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-}
-
-.back-btn {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 999;
-  background: #1e5c38;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-.back-btn:hover {
-  background: #7ac943;
-}
-
-
-#add-order-btn,
-.place-order-btn {
-  display: block;
-  margin: 20px auto;
-  background: #7ac943;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  text-align: center;
-}
-
-#add-order-btn:hover,
-.place-order-btn:hover {
-  background: #5da87a;
-}
-
-.box h3 {
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
-
-select,
-input[type="text"],
-input[type="time"] {
-  width: 100%;
-  padding: 6px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-
-label {
-  display: block;
-  margin: 5px 0;
-}
-
-.place-order-btn {
-  display: block;
-  margin: 20px auto;
-}
-
-
-h3 {
-  text-align: center;
-}
-
-.remove-btn {
-  display: inline-block;
-  margin-top: 15px;
-  background: #ff4d4d;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-.remove-btn:hover {
-  background: #cc0000;
-}
-
-.customer-info {
-  max-width: 400px;
-  margin: 20px auto;
-}
-
-
-  </style>
+  <link rel="stylesheet" href="Orderstyle.css">
+  <link rel="icon" type="image/png" href="TempPictures/logo.jpg">
 </head>
 
 <body>
@@ -208,53 +90,26 @@ h3 {
 
   <button class="place-order-btn" id="place-order-btn">Place Order</button>
 
-  <script>
-    const ordersContainer = document.getElementById("orders-container");
-    const addOrderBtn = document.getElementById("add-order-btn");
-    const totalSpan = document.getElementById("total");
-
-    // Save a template of the first order in case the user deletes all of them
-    const orderTemplate = ordersContainer.querySelector(".order").cloneNode(true);
-    
-    function calculateTotal() {
-      let totalPrice = 0;
-      ordersContainer.querySelectorAll(".order").forEach(order => {
-        const sizePrice = parseInt(order.querySelector(".size").value) || 0;
-        let addOnsPrice = 0;
-        order.querySelectorAll(".addon").forEach(cb => {
-          if (cb.checked) addOnsPrice += parseInt(cb.value);
-        });
-        totalPrice += sizePrice + addOnsPrice;
-      });
-      totalSpan.textContent = totalPrice;
-    }
-
-    function addRemoveListener(order) {
-      order.querySelector(".remove-btn").addEventListener("click", e => {
-        e.target.closest(".order").remove();
-        calculateTotal();
-      });
-    }
-
-    addRemoveListener(ordersContainer.querySelector(".order"));
-
-    addOrderBtn.addEventListener("click", () => {
-      const newOrder = orderTemplate.cloneNode(true);
-
-      newOrder.querySelectorAll("select").forEach(s => s.selectedIndex = 0);
-      newOrder.querySelectorAll("input[type=checkbox]").forEach(c => c.checked = false);
-
-      addRemoveListener(newOrder);
-
-      ordersContainer.appendChild(newOrder);
-
-      calculateTotal();
-    });
-
-    ordersContainer.addEventListener("change", calculateTotal);
-    
-    calculateTotal();
-  </script>
+  
+  <div id="orderpopup-modal" class="orderpopup">
+    <div class="orderpopup-content">
+      <span class="close-btn">&times;</span>
+      <h2>Order Confirmation</h2>
+      <div id="orderpopup-details">
+       
+      </div>
+      <button id="confirm-orderpopup-btn">OK</button>
+    </div>
+  </div>
+  <div id="thankpopup" class="thankpopup">
+    <div class="thankpopup-content">
+      <span class="close-btn">&times;</span>
+      <h2>Thank you for your order!</h2>
+      <p><strong>Please pay and pick up your order at your designated time. Thank you for choosing Tsambayan Milktea!</strong></p>
+      <button id="confirm-thankpopup-btn">OK</button>
+    </div>
+  </div>
+  <script src="OrderJava.js"></script>
 </body>
 
 </html>

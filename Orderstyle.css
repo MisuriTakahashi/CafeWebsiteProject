@@ -1,0 +1,260 @@
+body {
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#orders-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.box {
+  background: darkseagreen;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+.back-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 999;
+  background: #1e5c38;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.back-btn:hover {
+  background: #7ac943;
+}
+
+
+#add-order-btn,
+.place-order-btn {
+  display: block;
+  margin: 20px auto;
+  background: #7ac943;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+#add-order-btn:hover,
+.place-order-btn:hover {
+  background: #5da87a;
+}
+
+.box h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+select, input[type="text"], input[type="time"] {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
+.place-order-btn {
+  display: block;
+  margin: 20px auto;
+}
+
+
+h3 {
+  text-align: center;
+}
+
+.remove-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #ff4d4d;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.remove-btn:hover {
+  background: #cc0000;
+}
+
+.customer-info {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+
+.orderpopup {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.103); 
+  backdrop-filter: blur(1.4px);
+}
+
+.orderpopup-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover, .close-btn:focus {
+  color: black;
+  text-decoration: none;
+}
+
+#orderpopup-details {
+  text-align: left;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+#orderpopup-details h3 {
+  margin-top: 0;
+  color: #1e5c38;
+}
+
+#orderpopup-details p {
+  margin: 8px 0;
+}
+
+#confirm-orderpopup-btn {
+  margin-top: 20px;
+  background: #7ac943;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#confirm-orderpopup-btn:hover {
+  background: #5da87a;
+}
+
+.thankpopup {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.103); 
+  backdrop-filter: blur(1.4px);
+}
+
+.thankpopup-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover, .close-btn:focus {
+  color: black;
+  text-decoration: none;
+}
+
+#thankpopup-details {
+  text-align: left;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+#thankpopup-details h3 {
+  margin-top: 0;
+  color: #1e5c38;
+}
+
+#thankpopup-details p {
+  margin: 8px 0;
+}
+
+#confirm-thankpopup-btn {
+  margin-top: 20px;
+  background: #7ac943;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#confirm-thankpopup-btn:hover {
+  background: #5da87a;
+}

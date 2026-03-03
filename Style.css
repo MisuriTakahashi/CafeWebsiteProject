@@ -119,6 +119,7 @@ section {
     height: 350px;
     width: 1000px;
     border-radius: 35px;
+    box-shadow: 0 12px 30px rgba(46, 107, 70, 0.63);
 }
 .Imageshowcase1 {
     height: 340px;
@@ -136,6 +137,7 @@ section {
     width: 1000px;
     display: flex;
     border-radius: 35px;
+    box-shadow: 0 12px 30px rgba(46, 107, 70, 0.63);
 }
 
 .LocationBox p {
@@ -348,6 +350,7 @@ section {
     align-content: center;
     display: grid;
     grid-column: 1;
+    box-shadow: 0 12px 30px rgba(46, 107, 70, 0.63);
    
     
 }
