@@ -4,6 +4,15 @@ const ordersContainer = document.getElementById("orders-container");
 
     // Save a template of the first order in case the user deletes all of them
     const orderTemplate = ordersContainer.querySelector(".order").cloneNode(true);
+
+    // Pre-fill user info if logged in
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        const nameInput = document.getElementById("customer-name");
+        if (nameInput) nameInput.value = currentUser.username;
+      }
+    });
     
     function calculateTotal() {
       let totalPrice = 0;
@@ -54,12 +63,20 @@ const ordersContainer = document.getElementById("orders-container");
     const confirmThankPopupBtn = document.getElementById("confirm-thankpopup-btn");
 
     placeOrderBtn.addEventListener("click", () => {
-      const name = document.getElementById("customer-name").value;
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      
+      if (!currentUser) {
+        alert("You must be logged in to place an order.");
+        window.location.href = "Login.html";
+        return;
+      }
+
+      const name = document.getElementById("customer-name").value || currentUser.username;
       const contact = document.getElementById("customer-contact").value;
       const time = document.getElementById("order-time").value;
 
-      if (!name || !contact || !time) {
-        alert("Please fill in all customer information.");
+      if (!contact || !time) {
+        alert("Please fill in your contact information and pickup time.");
         return;
       }
 

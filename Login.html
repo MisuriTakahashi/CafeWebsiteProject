@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tsambayan Milktea</title>
+    <link rel="icon" type="image/png" href="TempPictures/logo.jpg">
+    <link rel="stylesheet" href="Loginstyle.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                <div class="error-message" id="loginError">Invalid username or password</div>
+            </div>
+            <button type="submit">Sign In</button>
+            <div class="form-footer">
+            <a href="Register.html">Register</a>
+            </div>
+            <center><a href="index.html" class="back-link">Return to Home</a></center>
+        </form>
+    </div>
+    <script src="Login.js"></script>
+</body>
+</html>
